@@ -1,7 +1,4 @@
-#include <stdio.h>
 
-typedef struct teste {
+typedef struct tag {
 	int a;
-} TesteDesu;
-
-int method();
+} Tag;
