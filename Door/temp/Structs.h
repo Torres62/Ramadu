@@ -1,12 +1,13 @@
 
 typedef struct tag {
-	int a;
+	int idTag;
+	int lengthTag;
 } Tag;
 
 typedef struct leitor {
-	int a;
+	int version;
 } Leitor;
 
 typedef struct servo {
-	int a;
+	int pinServo;
 } Servo;
