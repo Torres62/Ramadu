@@ -9,3 +9,9 @@ int deleteTag(int a, int b);
 int closeDoor(int a, int b);
 
 int openDoor(int a, int b);
+
+void showMainMenu();
+
+void readMenuOption();
+
+int isValidateOption(int option);
