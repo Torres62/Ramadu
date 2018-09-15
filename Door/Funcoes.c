@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include "Funcoes.h"
 
 /**
@@ -57,7 +58,9 @@ void readMenuOption() {
  * Return 1 if is valid, 0 otherwise
  */ 
 int isValidateOption(int option) {
-	// TODO validar entrada do usuario
-	return 1;
+	if (i >= 0 && i <= 3) {
+		return 1;
+	} else {
+		return 0;
+	}
 }
-	
