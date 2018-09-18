@@ -64,3 +64,33 @@ int isValidateOption(int option) {
 		return 0;
 	}
 }
+
+bool startReader(bool result){
+	nfc.begin();
+	
+	/* Get firmware version of the reader */
+	uint32_t versiondata = nfc.getFirmwareVersion();	
+	
+	/* Check if a reader was found */
+	if(! versiondata){	
+		Serial.print("Placa PN53x nao encontrada");
+		while(1);	/* halt */
+	}
+	
+	/* Print results */
+	Serial.print("Chip PN5 encontrado ");
+	Serial.println((versiondata>>24) & 0xFF, HEX);
+	Serial.print("Versao do firmware ");
+	Serial.print((versiondata>>16) & 0xFF, DEC);
+	Serial.print('.');
+	Serial.println((versiondata>>8) & 0xFF, DEC);
+	
+	/* Set max number of retry attempts to read from a card
+	This prevents us from waiting forever for a card */
+	nfc.setPassiveActivationRetries(0xFF);
+	
+	/* Configure boar to read RFID tags */
+	nfc.SAMConfig();
+	
+	Serial.println("Aguardando uma tag ISO14443A");
+}
