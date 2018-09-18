@@ -1,4 +1,4 @@
-bool verifyReader(bool result);
+bool startReader(bool result);
 
 int verifyTag (int a, int b);
 
