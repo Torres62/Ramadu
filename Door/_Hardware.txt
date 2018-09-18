@@ -1,2 +1,2 @@
 Main board -> UNO
-Leitor NFC -> RFID-RC5522
+Leitor NFC -> RFID-RC522 ou PN532
