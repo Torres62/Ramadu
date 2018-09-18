@@ -1,3 +1,5 @@
+bool verifyReader(bool result);
+
 int verifyTag (int a, int b);
 
 int includeTag (int a, int b);
