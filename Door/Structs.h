@@ -1,7 +1,7 @@
 
 typedef struct tag {
-	int idTag;
-	int lengthTag;
+	int uidTag[];
+	int uidLength;
 } Tag;
 
 typedef struct leitor {
