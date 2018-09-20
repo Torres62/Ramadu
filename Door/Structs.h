@@ -4,9 +4,9 @@ typedef struct tag {
 	int uidLength;
 } Tag;
 
-typedef struct leitor {
-	int version;
-} Leitor;
+typedef struct reader {
+	int versiondata;
+} Reader;
 
 typedef struct servo {
 	int pinServo;
