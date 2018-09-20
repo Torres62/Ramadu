@@ -58,32 +58,34 @@ void readMenuOption() {
  * Return 1 if is valid, 0 otherwise
  */ 
 int isValidateOption(int option) {
-	if (i >= 0 && i <= 3) {
+	if (option >= 0 && option <= 3) {
 		return 1;
 	} else {
 		return 0;
 	}
 }
 
-bool startReader(bool result){
+int startReader(void){
 	nfc.begin();
+	Reader reader;
 	
 	/* Get firmware version of the reader */
-	uint32_t versiondata = nfc.getFirmwareVersion();	
+	reader.versiondata = nfc.getFirmwareVersion();	
 	
 	/* Check if a reader was found */
-	if(! versiondata){	
+	if(! reader.versiondata){	
 		Serial.print("Placa PN53x nao encontrada");
+		return 0;
 		while(1);	/* halt */
 	}
 	
 	/* Print results */
 	Serial.print("Chip PN5 encontrado ");
-	Serial.println((versiondata>>24) & 0xFF, HEX);
+	Serial.println((reader.versiondata>>24) & 0xFF, HEX);
 	Serial.print("Versao do firmware ");
-	Serial.print((versiondata>>16) & 0xFF, DEC);
+	Serial.print((reader.versiondata>>16) & 0xFF, DEC);
 	Serial.print('.');
-	Serial.println((versiondata>>8) & 0xFF, DEC);
+	Serial.println((reader.versiondata>>8) & 0xFF, DEC);
 	
 	/* Set max number of retry attempts to read from a card
 	This prevents us from waiting forever for a card */
@@ -93,4 +95,36 @@ bool startReader(bool result){
 	nfc.SAMConfig();
 	
 	Serial.println("Aguardando uma tag ISO14443A");
+	
+	return 1;
+}
+
+int readTag(void){
+	boolean success;
+	Tag tag;
+	tag.uid[] = {0,0,0,0,0,0,0};
+	tag.uidLength = 0;
+	int i = 0;
+	
+	success = nfc.readPassiveTargetID(PN532_MIFARE_ISO14443A,&tag.uid[0],&tag.uidLength);
+	
+	if(success){
+		Serial.println("Tag lida");
+		Serial.print("Tamanho do UID: ");
+		Serial.print(tag.uidLength, DEC);
+		Serial.println(" bytes");
+		Serial.print("Valor do UID: ");
+		for(i = 0; i < tag.uidLength; i++){
+			Serial.print("Ox");
+			Serial.print(tag.uid[i], HEX);
+		}
+		
+		Serial.println("");
+		delay(1000);
+		return 1;
+	}else{
+		Serial.println("Nenhuma tag lida");
+		return 0;
+	}
+	
 }
