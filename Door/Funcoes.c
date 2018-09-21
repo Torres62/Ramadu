@@ -1,5 +1,11 @@
 #include <stdio.h>
+#include <SPI.h>
+#include <PN532_SPI.h>
+#include "PN532.h"
 #include "Funcoes.h"
+
+PN532_SPI pn532spi(SPI, 10);
+PN532 nfc(pn532spi);
 
 /**
  * Show the menu with the options for the user choose
@@ -65,7 +71,7 @@ int isValidateOption(int option) {
 	}
 }
 
-int startReader(void){
+int startReader(){
 	nfc.begin();
 	Reader reader;
 	
@@ -99,7 +105,7 @@ int startReader(void){
 	return 1;
 }
 
-int readTag(void){
+int readTag(){
 	boolean success;
 	Tag tag;
 	tag.uid[] = {0,0,0,0,0,0,0};
