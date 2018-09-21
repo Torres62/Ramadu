@@ -1,6 +1,6 @@
 
 typedef struct tag {
-	int uidTag[];
+	int uidTag[7];
 	int uidLength;
 } Tag;
 
