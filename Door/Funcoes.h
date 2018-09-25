@@ -8,9 +8,9 @@ int readTag();
 
 int deleteTag(int a, int b);
 
-int closeDoor();
+int closeDoor(int pinServo);
 
-int openDoor();
+int openDoor(int pinServo);
 
 void showMainMenu();
 
