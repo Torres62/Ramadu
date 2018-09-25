@@ -3,6 +3,7 @@
 #include <PN532_SPI.h>
 #include "PN532.h"
 #include "Funcoes.h"
+#include <Servo.h>
 
 PN532_SPI pn532spi(SPI, 10);
 PN532 nfc(pn532spi);
@@ -133,4 +134,33 @@ int readTag(){
 		return 0;
 	}
 	
+}
+
+int openDoor(int pinServo){
+	Servo servo;
+	int angle = 0;
+	
+	servo.attach(pinServo);
+	
+	for(angle = 0; angle < 180; angle++){
+		servo.write(angle);
+		delay(15);
+	}
+	delay(5000);
+	
+	servo.detach();
+}
+
+int closeDoor(int pinServo){
+	Servo servo;
+	int angle = 180;
+	
+	servo.attach(pinServo);
+	
+	for(angle = 180; angle > 0; angle--){
+		servo.write(angle);
+		delay(15);
+	}
+	delay(1000);
+	servo.detach();
 }
