@@ -113,8 +113,10 @@ int readTag(){
 	tag.uidLength = 0;
 	int i = 0;
 	
+	/* read tag */
 	success = nfc.readPassiveTargetID(PN532_MIFARE_ISO14443A,&tag.uid[0],&tag.uidLength);
 	
+	/* if read successful, print tag data */
 	if(success){
 		Serial.println("Tag lida");
 		Serial.print("Tamanho do UID: ");
@@ -140,14 +142,17 @@ int openDoor(int pinServo){
 	Servo servo;
 	int angle = 0;
 	
+	/* attach the servo to the pin */
 	servo.attach(pinServo);
 	
+	/* turn the servo 180º */
 	for(angle = 0; angle < 180; angle++){
 		servo.write(angle);
 		delay(15);
 	}
 	delay(5000);
 	
+	/* detach the servo from the pin */
 	servo.detach();
 }
 
@@ -155,12 +160,16 @@ int closeDoor(int pinServo){
 	Servo servo;
 	int angle = 180;
 	
+	/* attach the servo to the pin */
 	servo.attach(pinServo);
 	
+	/* turn the servo -180º */
 	for(angle = 180; angle > 0; angle--){
 		servo.write(angle);
 		delay(15);
 	}
 	delay(1000);
+	
+	* detach the servo from the pin */
 	servo.detach();
 }
