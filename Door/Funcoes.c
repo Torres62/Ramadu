@@ -170,6 +170,6 @@ int closeDoor(int pinServo){
 	}
 	delay(1000);
 	
-	* detach the servo from the pin */
+	/* detach the servo from the pin */
 	servo.detach();
 }
