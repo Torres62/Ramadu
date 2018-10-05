@@ -176,5 +176,5 @@ int closeDoor(int pinServo){
 
 int includeTag (int uidTag[7], int uidLength) {
 	
-	
+	return 1;
 }
