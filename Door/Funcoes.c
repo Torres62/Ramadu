@@ -173,3 +173,8 @@ int closeDoor(int pinServo){
 	/* detach the servo from the pin */
 	servo.detach();
 }
+
+int includeTag (int uidTag[7], int uidLength) {
+	
+	
+}
