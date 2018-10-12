@@ -175,6 +175,21 @@ int closeDoor(int pinServo){
 }
 
 int includeTag (int uidTag[7], int uidLength) {
+	FILE *fp;
+	int i = 0, result;
+	fp = fopen ("tags","wb");
 	
-	return 1;
+	if(fp == null){
+		printf("O arquivo nao pode ser aberto.\n");
+		return 1;
+	}
+	
+	if ( !(strcmp(uidTag, "")==0) ){
+		result = fwrite( &uidTag, sizeof (struct tag), 1, fp);
+		if (result != 1){
+			printf("Erro de escrita no arquivo \n");
+		}
+	}
+	fclose (fp);
+	return 0;
 }
