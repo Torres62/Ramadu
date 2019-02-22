@@ -1,0 +1,4 @@
+POO
+
+- Coesão -> classe que faz sentido [ALTA]
+- Acoplamento -> Não depender de muitas classes [BAIXA]
