@@ -6,6 +6,8 @@ import java.util.concurrent.Future;
 
 public class Camera {
 
+	private static final int SLEEP_TIME = 10000;
+	
 	private File file;
 	private Future<File> future;
 	
@@ -19,8 +21,7 @@ public class Camera {
 		ExecutorService pool = Executors.newCachedThreadPool();
 		future = pool.submit(() -> {
 			
-			Thread.sleep(10000);
-			// TODO
+			Thread.sleep(SLEEP_TIME);
 			return file;
 		});
 	}

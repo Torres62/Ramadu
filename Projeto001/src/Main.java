@@ -11,6 +11,7 @@ public class Main {
 		
 		for (;;) {
 			if (camera.requestStop()) {
+				
 				break;
 			}
 		}
