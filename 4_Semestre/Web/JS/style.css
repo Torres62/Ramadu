@@ -1,0 +1,35 @@
+header{
+  background-color: yellow;
+  height: 100px;
+  border: 2px solid orange;
+  margin: 5px;
+}
+
+section{
+  background-image: url(https://i.imgur.com/LO2rxwc.png);
+  background-color: green;
+  height: 400px;
+  margin-right: 205px;
+  margin-left: 205px;
+  border-radius: 10px;
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
+nav{
+  background-color: blue;
+  width: 200px;
+  height: 400px;
+  float: left;
+}
+
+aside{
+  background-color: red;
+  width: 200px;
+  height: 400px;
+  float: right;
+}
+
+footer{
+  background-color: magenta;
+}

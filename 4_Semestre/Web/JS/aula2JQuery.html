@@ -1,0 +1,23 @@
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <h1 id="id1">Programação Web</h1>
+    <button onclick="mudarCor()">Mudar cor</button>
+    <button onclick="oculta()">Ocultar</button>
+    <button onclick="mostra()">Mostrar</button>
+    <script>
+      function mudarCor() {
+        $('h1').css("color", "red")
+        $('h1').html("ASD")
+      }
+      function oculta() {
+        $('#id1').hide()
+      }
+      function mostra() {
+        $('#id1').show()
+      }
+    </script>
+  </body>
+</html>
